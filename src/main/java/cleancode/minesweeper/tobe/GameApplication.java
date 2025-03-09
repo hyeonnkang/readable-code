@@ -7,7 +7,7 @@ public class GameApplication {
 
     public static void main(String[] args) {
         GameLevel gameLevel = new Begginer();
-        
+
         Minesweeper minesweeper = new Minesweeper(gameLevel);
         minesweeper.run();
     }
