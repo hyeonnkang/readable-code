@@ -99,7 +99,7 @@ public class GameBoard {
                     continue;
                 }
                 int count = countNearbyLandMines(row, col);
-                if(count == 0){
+                if (count == 0) {
                     continue;
                 }
                 NumberCell numberCell = new NumberCell(count);
@@ -121,7 +121,7 @@ public class GameBoard {
         return board.length;
     }
 
-    public int getColSize(){
+    public int getColSize() {
         return board[0].length;
     }
 
