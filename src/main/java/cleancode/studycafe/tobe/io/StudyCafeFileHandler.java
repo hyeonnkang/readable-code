@@ -17,19 +17,7 @@ public class StudyCafeFileHandler {
     public List<StudyCafePass> readStudyCafePasses() {
         try {
             List<String> passListLines = Files.readAllLines(Paths.get(PATH_LIST_FILE_PATH));
-            List<StudyCafePass> studyCafePasses = new ArrayList<>();
-            for (String line : passListLines) {
-                String[] values = line.split(",");
-                StudyCafePassType studyCafePassType = StudyCafePassType.valueOf(values[0]);
-                int duration = Integer.parseInt(values[1]);
-                int price = Integer.parseInt(values[2]);
-                double discountRate = Double.parseDouble(values[3]);
-
-                StudyCafePass studyCafePass = StudyCafePass.of(studyCafePassType, duration, price, discountRate);
-                studyCafePasses.add(studyCafePass);
-            }
-
-            return studyCafePasses;
+            return getStudyCafePasses(passListLines);
         } catch (IOException e) {
             throw new RuntimeException("파일을 읽는데 실패했습니다.", e);
         }
@@ -38,21 +26,39 @@ public class StudyCafeFileHandler {
     public List<StudyCafeLockerPass> readLockerPasses() {
         try {
             List<String> lines = Files.readAllLines(Paths.get(LOCKER_FILE_PATH));
-            List<StudyCafeLockerPass> lockerPasses = new ArrayList<>();
-            for (String line : lines) {
-                String[] values = line.split(",");
-                StudyCafePassType studyCafePassType = StudyCafePassType.valueOf(values[0]);
-                int duration = Integer.parseInt(values[1]);
-                int price = Integer.parseInt(values[2]);
-
-                StudyCafeLockerPass lockerPass = StudyCafeLockerPass.of(studyCafePassType, duration, price);
-                lockerPasses.add(lockerPass);
-            }
-
-            return lockerPasses;
+            return getStudyCafeLockerPasses(lines);
         } catch (IOException e) {
             throw new RuntimeException("파일을 읽는데 실패했습니다.", e);
         }
+    }
+
+    private static List<StudyCafePass> getStudyCafePasses(List<String> lines) {
+        List<StudyCafePass> studyCafePasses = new ArrayList<>();
+        for (String line : lines) {
+            String[] values = line.split(",");
+            StudyCafePassType studyCafePassType = StudyCafePassType.valueOf(values[0]);
+            int duration = Integer.parseInt(values[1]);
+            int price = Integer.parseInt(values[2]);
+            double discountRate = Double.parseDouble(values[3]);
+
+            StudyCafePass studyCafePass = StudyCafePass.of(studyCafePassType, duration, price, discountRate);
+            studyCafePasses.add(studyCafePass);
+        }
+        return studyCafePasses;
+    }
+
+    private static List<StudyCafeLockerPass> getStudyCafeLockerPasses(List<String> lines) {
+        List<StudyCafeLockerPass> lockerPasses = new ArrayList<>();
+        for (String line : lines) {
+            String[] values = line.split(",");
+            StudyCafePassType studyCafePassType = StudyCafePassType.valueOf(values[0]);
+            int duration = Integer.parseInt(values[1]);
+            int price = Integer.parseInt(values[2]);
+
+            StudyCafeLockerPass lockerPass = StudyCafeLockerPass.of(studyCafePassType, duration, price);
+            lockerPasses.add(lockerPass);
+        }
+        return lockerPasses;
     }
 
 }

@@ -62,6 +62,15 @@ public class StudyCafePassMachine {
         }
     }
 
+    private StudyCafePass selectStudyCafePass(StudyCafePassType passType) {
+        List<StudyCafePass> studyCafePasses = studyCafeFileHandler.readStudyCafePasses();
+        List<StudyCafePass> passList = studyCafePasses.stream()
+                .filter(studyCafePass -> studyCafePass.getPassType() == passType)
+                .toList();
+        outputHandler.showPassListForSelection(passList);
+        return inputHandler.getSelectPass(passList);
+    }
+
     private StudyCafeLockerPass getStudyCafeLockerPass(StudyCafePass selectedPass) {
         List<StudyCafeLockerPass> lockerPasses = studyCafeFileHandler.readLockerPasses();
         return lockerPasses.stream()
@@ -71,15 +80,6 @@ public class StudyCafePassMachine {
             )
             .findFirst()
             .orElse(null);
-    }
-
-    private StudyCafePass selectStudyCafePass(StudyCafePassType passType) {
-        List<StudyCafePass> studyCafePasses = studyCafeFileHandler.readStudyCafePasses();
-        List<StudyCafePass> passList = studyCafePasses.stream()
-                .filter(studyCafePass -> studyCafePass.getPassType() == passType)
-                .toList();
-        outputHandler.showPassListForSelection(passList);
-        return inputHandler.getSelectPass(passList);
     }
 
 }
