@@ -6,6 +6,7 @@ import cleancode.minesweeper.tobe.cell.CellSnapshot;
 import cleancode.minesweeper.tobe.io.sign.CellSignFinder;
 import cleancode.minesweeper.tobe.io.sign.CellSignProvider;
 import cleancode.minesweeper.tobe.position.CellPosition;
+
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -66,7 +67,7 @@ public class ConsoleOutputHandler implements OutputHandler {
 
     @Override
     public void showCommentForUserAction() {
-        System.out.println("선택한 셀에 대한 행위를 선택하세 요. (1: 오픈, 2: 깃발 꽂기)");
+        System.out.println("선택한 셀에 대한 행위를 선택하세요. (1: 오픈, 2: 깃발 꽂기)");
     }
 
     @Override
@@ -78,4 +79,5 @@ public class ConsoleOutputHandler implements OutputHandler {
     public void showSimpleMessage(String message) {
         System.out.println(message);
     }
+
 }
