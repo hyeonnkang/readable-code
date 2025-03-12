@@ -3,7 +3,6 @@ package cleancode.studycafe.tobe.io;
 import cleancode.studycafe.tobe.model.StudyCafeLockerPass;
 import cleancode.studycafe.tobe.model.StudyCafePass;
 import cleancode.studycafe.tobe.model.StudyCafePassType;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -13,24 +12,6 @@ import java.util.List;
 public class StudyCafeFileHandler {
     private final String PATH_LIST_FILE_PATH = "src/main/resources/cleancode/studycafe/pass-list.csv";
     private final String LOCKER_FILE_PATH = "src/main/resources/cleancode/studycafe/locker.csv";
-
-    public List<StudyCafePass> readStudyCafePasses() {
-        try {
-            List<String> passListLines = Files.readAllLines(Paths.get(PATH_LIST_FILE_PATH));
-            return getStudyCafePasses(passListLines);
-        } catch (IOException e) {
-            throw new RuntimeException("파일을 읽는데 실패했습니다.", e);
-        }
-    }
-
-    public List<StudyCafeLockerPass> readLockerPasses() {
-        try {
-            List<String> lines = Files.readAllLines(Paths.get(LOCKER_FILE_PATH));
-            return getStudyCafeLockerPasses(lines);
-        } catch (IOException e) {
-            throw new RuntimeException("파일을 읽는데 실패했습니다.", e);
-        }
-    }
 
     private static List<StudyCafePass> getStudyCafePasses(List<String> lines) {
         List<StudyCafePass> studyCafePasses = new ArrayList<>();
@@ -59,6 +40,24 @@ public class StudyCafeFileHandler {
             lockerPasses.add(lockerPass);
         }
         return lockerPasses;
+    }
+
+    public List<StudyCafePass> readStudyCafePasses() {
+        try {
+            List<String> passListLines = Files.readAllLines(Paths.get(PATH_LIST_FILE_PATH));
+            return getStudyCafePasses(passListLines);
+        } catch (IOException e) {
+            throw new RuntimeException("파일을 읽는데 실패했습니다.", e);
+        }
+    }
+
+    public List<StudyCafeLockerPass> readLockerPasses() {
+        try {
+            List<String> lines = Files.readAllLines(Paths.get(LOCKER_FILE_PATH));
+            return getStudyCafeLockerPasses(lines);
+        } catch (IOException e) {
+            throw new RuntimeException("파일을 읽는데 실패했습니다.", e);
+        }
     }
 
 }

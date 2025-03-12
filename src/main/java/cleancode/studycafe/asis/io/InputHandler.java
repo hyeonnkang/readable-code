@@ -3,7 +3,6 @@ package cleancode.studycafe.asis.io;
 import cleancode.studycafe.asis.exception.AppException;
 import cleancode.studycafe.asis.model.StudyCafePass;
 import cleancode.studycafe.asis.model.StudyCafePassType;
-
 import java.util.List;
 import java.util.Scanner;
 
