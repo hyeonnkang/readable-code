@@ -65,4 +65,8 @@ public class OutputHandler {
         System.out.println(message);
     }
 
+    public void showExceptionMessage(Exception e) {
+        System.out.println(e.getMessage());
+    }
+
 }
