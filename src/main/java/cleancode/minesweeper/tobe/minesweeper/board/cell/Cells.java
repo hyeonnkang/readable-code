@@ -11,7 +11,7 @@ public class Cells {
         this.cells = cells;
     }
 
-    public static Cells of(List<Cell> cells){
+    public static Cells of(List<Cell> cells) {
         return new Cells(cells);
     }
 

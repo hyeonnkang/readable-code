@@ -8,7 +8,7 @@ public interface Cell {
 
     CellSnapshot getSnapshot();
 
-     void flag();
+    void flag();
 
     void open();
 
